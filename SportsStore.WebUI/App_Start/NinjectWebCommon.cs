@@ -1,10 +1,11 @@
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SportsStore.WebUI.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(SportsStore.WebUI.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(SportsStore.WebUI.App_Start.NinjectWebCommon), "Stop")]
 
 namespace SportsStore.WebUI.App_Start
 {
     using System;
     using System.Web;
+    using System.Web.Mvc;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -12,14 +13,14 @@ namespace SportsStore.WebUI.App_Start
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application.
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
@@ -61,6 +62,7 @@ namespace SportsStore.WebUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            DependencyResolver.SetResolver(new Infrastructure.NinjectDependencyResolver(kernel));
         }
     }
 }
