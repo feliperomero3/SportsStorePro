@@ -1,5 +1,4 @@
-﻿@using SportsStore.Domain.Entities
-@model IEnumerable<Product>
+﻿@model ProductsListViewModel
 
 @{
     ViewBag.Title = "Products";
@@ -7,7 +6,7 @@
 
 <h2>Products</h2>
 
-@foreach (var product in Model)
+@foreach (var product in Model.Products)
 {
     <div>
         <h3>@product.Name</h3>
@@ -15,3 +14,7 @@
         <h4>@product.Price.ToString("c")</h4>
     </div>
 }
+
+<div>
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>
