@@ -3,12 +3,24 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - SportsStore</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <title>@ViewBag.Title - SPORTS STORE</title>
+    <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <a class="navbar-brand" href="~/">SPORTS STORE</a>
+    </div>
     <div class="container body-content">
-        @RenderBody()
+        <div class="row panel">
+            <div id="categories" class="col-xs-4">
+                Put something useful here later.
+            </div>
+            <div class="col-xs-8">
+                @RenderBody()
+            </div>
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - SportsStore</p>
