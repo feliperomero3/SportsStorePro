@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "This is the standard method signature included in the new project template.", Scope = "member", Target = "~M:SportsStore.WebUI.MvcApplication.Application_Start")]
+[assembly: SuppressMessage("Design", "CA1052:Static holder types should be Static or NotInheritable", Justification = "This is the standard method signature included in the new project template.", Scope = "type", Target = "~T:SportsStore.WebUI.RouteConfig")]
